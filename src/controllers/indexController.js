@@ -62,4 +62,37 @@ exports.getMenu = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.getFoodsMenu = async (req, res, next) => {
+  try {
+    res.render('foods-menu', {
+      title: 'Food Items',
+      csrfToken: req.csrfToken(),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getDrinksMenu = async (req, res, next) => {
+  try {
+    res.render('drinks-menu', {
+      title: 'Food Items',
+      csrfToken: req.csrfToken(),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getBakeryMenu = async (req, res, next) => {
+  try {
+    res.render('bakery-menu', {
+      title: 'Bakery Items',
+      csrfToken: req.csrfToken(),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 // Add more controller methods as needed

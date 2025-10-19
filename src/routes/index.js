@@ -21,7 +21,9 @@ const indexController = require('../controllers/indexController');
 router.get('/menu', indexController.getMenu);
 router.get('/about', indexController.getAbout);
 router.get('/', indexController.getHome);
-
+router.get('/bakery-menu', indexController.getBakeryMenu);
+router.get('/drinks-menu', indexController.getDrinksMenu);
+router.get('/foods-menu', indexController.getFoodsMenu);
 
 // Import controllers
 // const indexController = require('../controllers/indexController');
