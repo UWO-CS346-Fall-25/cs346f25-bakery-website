@@ -34,13 +34,13 @@ exports.getHome = async (req, res, next) => {
 };
 
 /**
- * GET /about
+ * GET /menu
  * Display the about page
  */
-exports.getAbout = async (req, res, next) => {
+exports.getMenu = async (req, res, next) => {
   try {
-    res.render('about', {
-      title: 'About',
+    res.render('menu', {
+      title: 'Menu',
       csrfToken: req.csrfToken(),
     });
   } catch (error) {
@@ -48,4 +48,36 @@ exports.getAbout = async (req, res, next) => {
   }
 };
 
+exports.getFoodsMenu = async (req, res, next) => {
+  try {
+    res.render('foods-menu', {
+      title: 'Food Items',
+      csrfToken: req.csrfToken(),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getDrinksMenu = async (req, res, next) => {
+  try {
+    res.render('drinks-menu', {
+      title: 'Food Items',
+      csrfToken: req.csrfToken(),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getBakeryMenu = async (req, res, next) => {
+  try {
+    res.render('bakery-menu', {
+      title: 'Bakery Items',
+      csrfToken: req.csrfToken(),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 // Add more controller methods as needed

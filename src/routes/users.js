@@ -27,9 +27,10 @@ const router = express.Router();
 
 // Import controllers
 // const userController = require('../controllers/userController');
-
+const userController = require('../controllers/userController');
 // Define routes
 // router.get('/register', userController.getRegister);
 // router.post('/register', userController.postRegister);
+router.get('/login', userController.getLogin);
 
 module.exports = router;
