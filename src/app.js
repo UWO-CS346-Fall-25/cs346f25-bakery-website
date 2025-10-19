@@ -86,7 +86,8 @@ app.get('/', csrfProtection, (req, res) => {
 
 const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
-
+const userRoutes = require('./routes/users');
+app.use('/users', userRoutes);
 
 // 404 handler
 app.use((req, res) => {

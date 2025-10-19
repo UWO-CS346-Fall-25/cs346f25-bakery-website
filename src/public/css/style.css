@@ -323,6 +323,20 @@ ul{
   text-align: center;
 }
 
+ #login form {
+  width: 300px;       /* fixed or max width */
+  margin: 0 auto;     /* centers horizontally */
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+ #login form button{
+  display: inline-block;
+}
+
 /* Footer */
 footer {
   background-color: var(--dark-color);
@@ -346,4 +360,8 @@ footer {
   .feature-grid {
     grid-template-columns: 1fr;
   }
+
+
+
+
 }
