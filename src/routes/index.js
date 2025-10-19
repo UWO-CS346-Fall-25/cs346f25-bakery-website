@@ -17,6 +17,9 @@
 
 const express = require('express');
 const router = express.Router();
+const indexController = require('../controllers/indexController');
+router.get('/menu', indexController.getMenu);
+router.get('/about', indexController.getAbout);
 
 // Import controllers
 // const indexController = require('../controllers/indexController');

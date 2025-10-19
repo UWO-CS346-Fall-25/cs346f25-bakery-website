@@ -40,6 +40,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -60,6 +62,7 @@ app.use(
 // CSRF protection
 // Note: Apply this after session middleware
 const csrfProtection = csrf({ cookie: false });
+app.use(csrfProtection);
 
 // Make CSRF token available to all views
 app.use((req, res, next) => {
@@ -80,6 +83,10 @@ app.get('/', csrfProtection, (req, res) => {
     csrfToken: req.csrfToken(),
   });
 });
+
+const indexRouter = require('./routes/index');
+app.use('/', indexRouter);
+
 
 // 404 handler
 app.use((req, res) => {

@@ -48,4 +48,18 @@ exports.getAbout = async (req, res, next) => {
   }
 };
 
+/**
+ * GET /menu
+ * Display the about page
+ */
+exports.getMenu = async (req, res, next) => {
+  try {
+    res.render('menu', {
+      title: 'Menu',
+      csrfToken: req.csrfToken(),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 // Add more controller methods as needed
