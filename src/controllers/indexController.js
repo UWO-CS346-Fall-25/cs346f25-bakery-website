@@ -34,21 +34,6 @@ exports.getHome = async (req, res, next) => {
 };
 
 /**
- * GET /about
- * Display the about page
- */
-exports.getAbout = async (req, res, next) => {
-  try {
-    res.render('about', {
-      title: 'About',
-      csrfToken: req.csrfToken(),
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-/**
  * GET /menu
  * Display the about page
  */
