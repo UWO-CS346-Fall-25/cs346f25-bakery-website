@@ -110,6 +110,13 @@ Comprehensive documentation is available in the `docs/` folder:
 - [docs/SETUP.md](docs/SETUP.md) - Detailed setup instructions
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) - Architecture and design patterns
 
+- [src/views/index.ejs] - Homepage
+- [src/views/menu.ejs] - Displays links to three sub-menus
+- [src/views/users/login.ejs] - Login Page
+- [src/views/bakery-menu.ejs] - Menu that contains all items falling underneath the bakery category, this menu will display      items stored in database as entered by logged in users
+- [src/views/foods-menu.ejs] - Menu that contains all items falling underneath the food category, this menu will display      items stored in database as entered by logged in users
+- [src/views/drinks-menu.ejs] - Menu that contains all items falling underneath the drinks category, this menu will display      items stored in database as entered by logged in users
+
 ## Technology Stack
 
 - **Runtime**: Node.js 20
