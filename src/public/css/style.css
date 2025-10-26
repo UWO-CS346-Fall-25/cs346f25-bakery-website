@@ -341,6 +341,29 @@ ul{
   text-align: center;
 }
 
+#popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px; 
+  border: 2px solid #d5a253;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  z-index: 100;
+}
+      
+#overlay {
+  
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 50;
+  
+}
 /* Footer */
 footer {
   background-color: var(--dark-color);

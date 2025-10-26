@@ -84,6 +84,9 @@ app.get('/', csrfProtection, (req, res) => {
   });
 });
 
+const nutritionRouter = require("./routes/nutritionPopupRoute");
+app.use("/", nutritionRouter);
+
 const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
 const userRoutes = require('./routes/users');
