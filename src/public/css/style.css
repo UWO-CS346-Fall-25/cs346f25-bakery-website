@@ -337,6 +337,10 @@ ul{
   display: inline-block;
 }
 
+ #open-or-not{
+  text-align: center;
+}
+
 /* Footer */
 footer {
   background-color: var(--dark-color);
