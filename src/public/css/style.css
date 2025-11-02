@@ -364,6 +364,13 @@ ul{
   z-index: 50;
   
 }
+
+.error-message{
+  color: red;
+  font-size: 0.9em;
+  font-style: italic;
+  display: block;
+}
 /* Footer */
 footer {
   background-color: var(--dark-color);
