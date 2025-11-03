@@ -386,8 +386,14 @@ ul{
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   border-radius: 10px;
   z-index: 100;
-  width: 20%;
-  height: 30%;
+  width: fit-content;
+  height: fit-content;
+  min-width: 350px;
+  min-height: 250px;
+}
+
+#popup h2 {
+  text-align: center;
 }
       
 #overlay {
@@ -397,6 +403,27 @@ ul{
   background: rgba(0,0,0,0.5);
   z-index: 50;
   
+}
+
+.new-item-field{
+  display: flex;
+  justify-content: left; 
+  align-items: center;     
+  gap: 10px;               
+  margin-bottom: 10px;
+}
+
+.new-item-field label{
+  width:50%;
+  text-align: right;
+}
+
+.new-item-field select,
+.new-item-field input {
+  flex: 1;
+  padding: 6px 8px; 
+  line-height: 1.2; 
+  height: auto;
 }
 
 .error-message{
