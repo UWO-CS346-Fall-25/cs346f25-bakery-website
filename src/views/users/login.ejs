@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %> - CS346 Project</title>
   <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/loginValidation.js" defer></script>
 </head>
 <body>
   <header>
@@ -36,12 +37,14 @@
       
     </section>
     <div id="login">
-        <form>
-            <h2>Username</h2>
-            <input type="text" id="username" name="username" placeholder="username">
-            <h2>Password</h2>
-            <input type="text" id="password" name="password" placeholder="password">
-            <button type="submit">Login</button>
+        <form id="login-form">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username">
+          <span id="username-error" class="error-message"></span>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password">
+          <span id="password-error" class="error-message"></span>
+          <button type="submit">Submit</button>
         </form>
     </div>
   <footer>
