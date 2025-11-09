@@ -8,6 +8,7 @@
  * - Routes
  * - Error handling
  */
+require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
@@ -15,10 +16,9 @@ const helmet = require('helmet');
 const session = require('express-session');
 const csrf = require('csurf');
 
-// Initialize Express app
 const app = express();
 
-// Security middleware - Helmet
+// Helmet for security
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -32,65 +32,50 @@ app.use(
   })
 );
 
-// View engine setup - EJS
+// View engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Body parsing middleware
+// Body parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Session configuration
+// Session middleware
 app.use(
   session({
     secret: process.env.SESSION_SECRET || 'your-secret-key-change-this',
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+      secure: false,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24, // 24 hours
     },
   })
 );
 
-// CSRF protection
-// Note: Apply this after session middleware
-const csrfProtection = csrf({ cookie: false });
-app.use(csrfProtection);
-
-// Make CSRF token available to all views
+// Make CSRF token and user available in all views
 app.use((req, res, next) => {
   res.locals.user = req.session.user || null;
   next();
 });
 
 // Routes
-// Import and use your route files here
-// Example:
-// const indexRouter = require('./routes/index');
-// app.use('/', indexRouter);
-
-// Placeholder home route
-app.get('/', csrfProtection, (req, res) => {
-  res.render('index', {
-    title: 'Home',
-    csrfToken: req.csrfToken(),
-  });
-});
 
 const nutritionRouter = require("./routes/nutritionPopupRoute");
 app.use("/", nutritionRouter);
 
 const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
+
 const userRoutes = require('./routes/users');
 app.use('/users', userRoutes);
+
+const menuRoutes = require('./routes/menu');
+app.use('/menu', menuRoutes); // prefix /menu
 
 // 404 handler
 app.use((req, res) => {
@@ -102,20 +87,15 @@ app.use((req, res) => {
 });
 
 // Error handler
-// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, _next) => {
-  // Log error in development
   if (process.env.NODE_ENV === 'development') {
     console.error(err.stack);
   }
 
-  // Set locals, only providing error details in development
   res.locals.message = err.message;
   res.locals.error = process.env.NODE_ENV === 'development' ? err : {};
 
-  // Render error page
-  res.status(err.status || 500);
-  res.render('error', {
+  res.status(err.status || 500).render('error', {
     title: 'Error',
     message: err.message,
     error: res.locals.error,
