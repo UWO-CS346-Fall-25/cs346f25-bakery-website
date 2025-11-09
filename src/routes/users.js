@@ -21,7 +21,8 @@
  *
  * module.exports = router;
  */
-
+const csrf = require('csurf');
+const csrfProtection = csrf({ cookie: false });
 const express = require('express');
 const router = express.Router();
 
@@ -31,6 +32,6 @@ const userController = require('../controllers/userController');
 // Define routes
 // router.get('/register', userController.getRegister);
 // router.post('/register', userController.postRegister);
-router.get('/login', userController.getLogin);
+router.get('/login', csrfProtection, userController.getLogin);
 
 module.exports = router;

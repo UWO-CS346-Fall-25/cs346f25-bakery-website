@@ -42,9 +42,13 @@
 
     <div id="popup">
       <h2>New Menu Item:</h2>
-      <form>
+      <form action="/menu" method="POST" enctype="multipart/form-data">
+
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+
         <div class="new-item-field">
-          <select id="menu-type" name="menu-type">
+          <select id="menu_type" name="menu_type">
             <option value="">-- Select menu item should appear on --</option>
             <option value="bakery">Bakery</option>
             <option value="food">Food</option>
@@ -53,12 +57,12 @@
         </div>
         <div class="new-item-field">
           <label>Item Name:</label>
-          <input type="text" id="item-name" name="item-name" required>
+          <input type="text" id="item-name" name="item_name" required>
         </div>
 
         <div class="new-item-field">
           <label>Size/Sevings:</label>
-          <input type="text" id="item-servings" name="servings" required>
+          <input type="text" id="item-servings" name="size_servings" required>
         </div>
 
         <div class="new-item-field">
@@ -86,8 +90,14 @@
           <input type="number" id="item-protein" name="protein" min="0" required>
         </div>
 
+        <div class="new-item-field">
+          <label>Image:</label>
+          <input type="file" name="img_url" id="imageUpload" accept="image/*" required/>
+        </div>
+
         <button type="submit">Submit</button>
       </form>
+
       <button id="close-popup">Close</button>
     </div>
 

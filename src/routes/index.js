@@ -15,14 +15,17 @@
  * module.exports = router;
  */
 
+const csrf = require('csurf');
+const csrfProtection = csrf({ cookie: false });
 const express = require('express');
 const router = express.Router();
 const indexController = require('../controllers/indexController');
-router.get('/menu', indexController.getMenu);
-router.get('/', indexController.getHome);
-router.get('/bakery-menu', indexController.getBakeryMenu);
-router.get('/drinks-menu', indexController.getDrinksMenu);
-router.get('/foods-menu', indexController.getFoodsMenu);
+
+router.get('/menu', csrfProtection, indexController.getMenu);
+router.get('/', csrfProtection, indexController.getHome);
+router.get('/bakery-menu', csrfProtection, indexController.getBakeryMenu);
+router.get('/drinks-menu', csrfProtection, indexController.getDrinksMenu);
+router.get('/foods-menu', csrfProtection, indexController.getFoodsMenu);
 
 // Import controllers
 // const indexController = require('../controllers/indexController');
