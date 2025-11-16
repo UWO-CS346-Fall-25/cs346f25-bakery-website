@@ -35,7 +35,10 @@
       <h1>Menu</h1>
     </section>
 
-    <button id="new-menu-item">Add New Item</button>
+    <% if (user) { %>
+      <button id="new-menu-item">Add New Item</button>
+    <% } %>
+
 
     <div id="overlay"></div>
 
