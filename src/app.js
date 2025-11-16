@@ -64,8 +64,10 @@ app.use((req, res, next) => {
 });
 
 // Routes
+
 const userRoutes = require('./routes/users');
 app.use('/users', userRoutes);
+
 
 const nutritionRouter = require("./routes/nutritionPopupRoute");
 app.use("/", nutritionRouter);
@@ -75,6 +77,7 @@ app.use('/', indexRouter);
 
 const menuRoutes = require('./routes/menu');
 app.use('/menu', menuRoutes); // prefix /menu
+
 
 // 404 handler
 app.use((req, res) => {
