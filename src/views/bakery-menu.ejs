@@ -15,7 +15,6 @@
             <li><a href="/">Home</a></li>
             <li><a href="/menu">Menu</a></li>
             <% if (user) { %>
-              <li><a href="/profile">Profile</a></li>
               <li>
                 <form action="/users/logout" method="POST" style="display: inline;">
                   <input type="hidden" name="_csrf" value="<%= csrfToken %>">
