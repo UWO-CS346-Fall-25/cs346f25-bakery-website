@@ -10,7 +10,7 @@
 
 // Import models
 // const User = require('../models/User');
-
+const supabase = require("../config/supabase");
 /**
  * GET /users/register
  * Display registration form
@@ -28,21 +28,19 @@ exports.getRegister = (req, res) => {
  */
 exports.postRegister = async (req, res, next) => {
   try {
-    // const { username, email, password } = req.body;
+    const { email, password } = req.body;
 
-    // Validate input
-    // Hash password
-    // Create user in database
-    // const user = await User.create({ username, email, password: hashedPassword });
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password
+    });
 
-    // Set session
-    // req.session.user = { id: user.id, username: user.username };
-
-    // Redirect to home or dashboard
+    // Redirect to home
     res.redirect('/');
   } catch (error) {
     next(error);
   }
+  res.redirect("/users/login");
 };
 
 /**
@@ -62,35 +60,45 @@ exports.getLogin = (req, res) => {
  */
 exports.postLogin = async (req, res, next) => {
   try {
-    // const { email, password } = req.body;
+    const { email, password } = req.body;
 
-    // Find user by email
-    // const user = await User.findByEmail(email);
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
 
-    // Verify password
-    // if (!user || !await verifyPassword(password, user.password)) {
-    //   return res.render('users/login', {
-    //     title: 'Login',
-    //     error: 'Invalid credentials',
-    //     csrfToken: req.csrfToken(),
-    //   });
-    // }
+    
+    if (error) {
+      return res.render("users/login", {
+        title: "Login",
+        error: "Invalid email or password",
+        csrfToken: req.csrfToken()
+      });
+    }
 
-    // Set session
-    // req.session.user = { id: user.id, username: user.username };
+    
+    req.session.user = data.user;
+    req.session.access_token = data.session.access_token;
+    req.session.refresh_token = data.session.refresh_token;
 
-    // Redirect to home or dashboard
-    res.redirect('/');
-  } catch (error) {
-    next(error);
+  
+    req.session.save(() => {
+      return res.redirect("/");
+    });
+
+  } catch (err) {
+    next(err);
   }
 };
+
 
 /**
  * POST /users/logout
  * Logout user
  */
-exports.postLogout = (req, res) => {
+exports.postLogout = async (req, res) => {
+  await supabase.auth.signOut();
+  
   req.session.destroy((err) => {
     if (err) {
       console.error('Error destroying session:', err);

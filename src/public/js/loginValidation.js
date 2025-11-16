@@ -2,12 +2,12 @@ let LoginForm = document.querySelector("#login-form");
 LoginForm.addEventListener("submit", checkFields);
 
 function checkFields(event) {
-    let usernameInput = document.querySelector("#username");
+    let usernameInput = document.querySelector("#email");
     let passwordInput = document.querySelector("#password");
-    let usernameError = document.querySelector("#username-error");
+    let usernameError = document.querySelector("#email-error");
     let passwordError = document.querySelector("#password-error");
     if (usernameInput.value.trim().length == 0) {
-        usernameError.textContent = "Username is required";
+        usernameError.textContent = "Email is required";
         event.preventDefault();
     }
     if(passwordInput.value.trim().length == 0){

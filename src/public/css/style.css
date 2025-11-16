@@ -432,6 +432,14 @@ ul{
   font-style: italic;
   display: block;
 }
+
+#register-nav{
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
 /* Footer */
 footer {
   background-color: var(--dark-color);
