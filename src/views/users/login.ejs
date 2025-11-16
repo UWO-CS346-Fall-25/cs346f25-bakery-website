@@ -16,7 +16,6 @@
           <li><a href="/">Home</a></li>
           <li><a href="/menu">Menu</a></li>
           <% if (user) { %>
-            <li><a href="/profile">Profile</a></li>
             <li>
               <form action="/users/logout" method="POST" style="display: inline;">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
@@ -37,24 +36,30 @@
       
     </section>
     <div id="login">
-        <form id="login-form" action="/users/login" method="POST">
-          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <form id="login-form" action="/users/login" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required="email">
-            <span id="email-error" class="error-message"></span>
-          </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required="email">
+          <span id="email-error" class="error-message"></span>
+        </div>
 
-          <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required="password">
-            <span id="password-error" class="error-message"></span>
-          <button type="submit">Submit</button>
-          </div>
-          
-        </form>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required="password">
+          <span id="password-error" class="error-message"></span>
+        <button type="submit">Submit</button>
+        </div>
+        
+      </form>
     </div>
+
+    <div id="register-nav">
+      <p>Don't have an account?</p>
+      <a class="btn"href="/users/register">Register</a>
+    </div>
+
   <footer>
     <div class="container">
       <p>&copy; 2025 Fuzzy Lambs Cafe and Bakery. All rights reserved.</p>
