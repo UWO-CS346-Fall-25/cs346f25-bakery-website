@@ -8,7 +8,7 @@ let cachedDate = null;
 async function fetchRandomBakingRecipe() {
     const today = new Date().toISOString().split("T")[0];
 
-  // If we already have today's recipe, return it
+  // If recipe was already called today return it
   if (cachedRecipe && cachedDate === today) {
     return cachedRecipe;
   }
