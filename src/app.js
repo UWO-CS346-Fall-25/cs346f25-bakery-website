@@ -78,6 +78,9 @@ app.use('/', indexRouter);
 const menuRoutes = require('./routes/menu');
 app.use('/menu', menuRoutes); // prefix /menu
 
+const recipeController = require('./controllers/recipeController');
+app.get("/recipe/today", recipeController.getRecipeOfTheDay);
+
 
 // 404 handler
 app.use((req, res) => {
