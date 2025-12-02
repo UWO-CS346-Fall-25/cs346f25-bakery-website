@@ -1,32 +1,19 @@
-/**
- * Main Stylesheet
- * 
- * This file contains the base styles for the application.
- * Organize your styles logically:
- * 1. CSS Variables
- * 2. Reset/Base styles
- * 3. Layout
- * 4. Components
- * 5. Pages
- * 6. Utilities
- */
-
-/* CSS Variables */
 :root {
-  --primary-color: black;
-  --secondary-color: #6c757d;
-  --success-color: #28a745;
-  --danger-color: #dc3545;
-  --warning-color: #ffc107;
-  --info-color: #17a2b8;
-  --light-color: #f8f9fa;
-  --dark-color: black;
+  --primary-color: #5a4632;      /* rich espresso brown */
+  --secondary-color: #8b8d7a;    /* muted herbal gray-green */
+  --success-color: #6c8f5a;      /* natural leafy green */
+  --danger-color: #b14f4f;       /* muted berry red */
+  --warning-color: #d6a85b;      /* warm honey-gold */
+  --info-color: #7ca4a8;         /* soft calming teal */
+  --light-color: #f4efe8;        /* warm cream */
+  --dark-color: #3c2f23;         /* dark roast brown */
   --font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
     Arial, sans-serif;
   --border-radius: 4px;
-  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
 }
+
 
 /* Reset/Base Styles */
 * {
@@ -38,8 +25,8 @@
 body {
   font-family: var(--font-family);
   line-height: 1.6;
-  color: black;
-  background-color: #ffffff;
+  color: #3c2f23;                    /* warm dark roast text */
+  background-color: #f4efe8;         /* warm café cream background */
 }
 
 a {
@@ -121,8 +108,8 @@ main {
 .hero {
   text-align: center;
   padding: 3rem 0;
-  background-color: #f4f892;
-  color: black;
+  background-color: #e6ddcf;        /* latte beige */
+  color: #3c2f23;                   /* dark roast text */
   border-radius: var(--border-radius);
   margin-bottom: 2rem;
   width: 100vw;
@@ -131,14 +118,11 @@ main {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-
 }
 
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  
-
 }
 
 .hero p {
@@ -248,7 +232,7 @@ main {
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  background-color: #4a3827;      /* deeper espresso */
   text-decoration: none;
 }
 
@@ -285,12 +269,11 @@ main {
 
 ul{
   list-style-type: none;
-
 }
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   list-style: none;
   padding: 0;
@@ -310,17 +293,17 @@ ul{
 }
 
 .nutr-btn:hover {
-  color: #8b5e34;
+  color: var(--primary-color);
   text-decoration: underline;
 }
 
 .menu-item {
   background: #fff;
-  border: 2px solid #e2e2e2;
+  border: 2px solid #d8cfc4;        /* parchment border */
   border-radius: 10px;
   padding: 15px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(80, 70, 60, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -332,45 +315,31 @@ ul{
   height: 15vw;
 }
 
-.location{
+.location,
+.hours,
+.breakfast-hours,
+.contact {
   margin-top: 5vw;
   padding: 2px;
   text-align: center;
 }
 
-.hours{
-  margin-top: 5vw;
-  padding: 2px;
-  text-align: center;
-}
-
-.breakfast-hours{
-  margin-top: 5vw;
-  padding: 2px;
-  text-align: center;
-}
-
-.contact{
-  margin-top: 5vw;
-  padding: 2px;
-  text-align: center;
-}
-
- #login form {
-  width: 300px;       /* fixed or max width */
-  margin: 0 auto;     /* centers horizontally */
+/* Login */
+#login form {
+  width: 300px;
+  margin: 0 auto;
   text-align: center;
   padding: 2rem;
   background: white;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(60, 45, 30, 0.15);
 }
 
- #login form button{
+#login form button{
   display: inline-block;
 }
 
- #open-or-not{
+#open-or-not{
   text-align: center;
 }
 
@@ -382,8 +351,8 @@ ul{
   transform: translate(-50%, -50%);
   background: white;
   padding: 20px; 
-  border: 2px solid lightgray;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border: 2px solid #d8cfc4;
+  box-shadow: 0 4px 8px rgba(50, 40, 30, 0.2);
   border-radius: 10px;
   z-index: 100;
   width: fit-content;
@@ -402,7 +371,6 @@ ul{
   inset: 0;
   background: rgba(0,0,0,0.5);
   z-index: 50;
-  
 }
 
 .new-item-field{
@@ -427,7 +395,7 @@ ul{
 }
 
 .error-message{
-  color: red;
+  color: var(--danger-color);
   font-size: 0.9em;
   font-style: italic;
   display: block;
@@ -440,6 +408,7 @@ ul{
   align-items: center;
   gap: 1rem;
 }
+
 /* Footer */
 footer {
   background-color: var(--dark-color);
@@ -463,8 +432,6 @@ footer {
   .feature-grid {
     grid-template-columns: 1fr;
   }
-
-
-
-
 }
+
+
