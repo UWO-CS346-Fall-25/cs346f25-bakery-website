@@ -36,12 +36,20 @@
     </section>
 
     <ul class="menu-grid">
-        <li class="menu-item" data-id="2">
-          <button class = "nutr-btn">Coffee</button>
-          <img src="img/drinks-items-image.jpg" alt="Bakery Item">
-          <p class="item-info">$3.99 • 16 oz</p>
+      <% items.forEach(item => { %>
+        <li class="menu-item" data-id="<%= item.id %>">
+          <button class="nutr-btn"><%= item.item_name %></button>
+
+          <!-- stored image -->
+          <img src="<%= item.img_url %>" alt="<%= item.item_name %>">
+
+          <p class="item-info">
+            $<%= item.price %> • <%= item.size_servings %>
+          </p>
         </li>
+      <% }) %>
     </ul>
+
     
     <div id="overlay"></div>
     <div id="popup">

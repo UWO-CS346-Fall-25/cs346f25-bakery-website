@@ -68,6 +68,8 @@ app.use((req, res, next) => {
 const userRoutes = require('./routes/users');
 app.use('/users', userRoutes);
 
+const menuDisplayRoutes = require("./routes/menuDisplay");
+app.use("/", menuDisplayRoutes);
 
 const nutritionRouter = require("./routes/nutritionPopupRoute");
 app.use("/", nutritionRouter);
@@ -79,7 +81,7 @@ const menuRoutes = require('./routes/menu');
 app.use('/menu', menuRoutes); // prefix /menu
 
 const recipeController = require('./controllers/recipeController');
-app.get("/recipe/today", recipeController.getRecipeOfTheDay);
+app.get("/recipe/today", csrf({ cookie: false }), recipeController.getRecipeOfTheDay);
 
 
 // 404 handler
