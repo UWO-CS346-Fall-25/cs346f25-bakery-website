@@ -342,19 +342,76 @@ ul{
 }
 
 /* Login */
-#login form {
-  width: 300px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 2rem;
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 10px rgba(60, 45, 30, 0.15);
+.login {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-#login form button{
-  display: inline-block;
+.login-form {
+  background: #fff;
+  width: 100%;
+  max-width: 420px;
+  padding: 25px 30px;
+  border-radius: 12px;
+  border: 2px solid #d8cfc4; /* parchment border */
+  box-shadow: 0 4px 10px rgba(80, 70, 60, 0.15);
 }
+
+
+.login-form button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+
+  display: inline-block;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.login-form button[type="submit"]:hover {
+  background-color: #4a3827;
+}
+
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 2px solid #d8cfc4;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+  background: #fbf8f5;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #8b8d7a; /* herbal gray-green */
+}
+
+/* Error message */
+.error-message {
+  color: #b14f4f;       /* muted berry red */
+  font-size: 0.9rem;
+  margin-top: 4px;
+  height: 16px;
+}
+
 
 #open-or-not{
   text-align: center;
@@ -424,6 +481,15 @@ ul{
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+#register-nav .nutr-btn{
+  font-size: inherit;    
+  font-family: inherit;    
+  margin: 0.25rem 0.5rem;  
+  display: inline-block;   
+  vertical-align: middle;   
+  gap: 0;                   
 }
 
 /* Footer */

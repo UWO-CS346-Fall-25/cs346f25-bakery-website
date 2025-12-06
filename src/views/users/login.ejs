@@ -36,8 +36,8 @@
       <h1>Login</h1>
       
     </section>
-    <div id="login">
-      <form id="login-form" action="/users/login" method="POST">
+    <div class="login">
+      <form class="login-form" action="/users/login" method="POST">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
         <div class="form-group">
@@ -58,8 +58,10 @@
 
     <div id="register-nav">
       <p>Don't have an account?</p>
-      <a class="btn"href="/users/register">Register</a>
+      <a class="nutr-btn"href="/users/register">Register</a>
     </div>
+  
+  </main>
 
   <footer>
     <div class="container">

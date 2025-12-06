@@ -26,8 +26,8 @@
       <h1>Register</h1>
       
     </section>
-    <div id="register">
-        <form id="register-form" action="/users/register" method="POST">
+    <div class="login">
+        <form class="login-form" action="/users/register" method="POST">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
           <div class="form-group">
@@ -45,6 +45,8 @@
           
         </form>
     </div>
+
+  </main>
   <footer>
     <div class="container">
       <p>&copy; 2025 Lambs Cafe and Bakery. All rights reserved.</p>
