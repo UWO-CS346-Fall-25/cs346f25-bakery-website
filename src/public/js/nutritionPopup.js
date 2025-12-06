@@ -15,7 +15,7 @@ document.querySelectorAll(".nutr-btn").forEach((button) => {
         if (!data) throw new Error("Item not found");
 
         // takes data from controller and fills the popup
-        document.getElementById("popup-title").textContent = data.name;
+        document.getElementById("popup-title").textContent = data.item_name + " Nutrition Info";
         document.getElementById("popup-info").innerHTML = `
           <ul class="nutrition">
             <li>Calories: ${data.calories}</li>

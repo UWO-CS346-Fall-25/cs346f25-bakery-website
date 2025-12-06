@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#new-menu-item").addEventListener("click", () => {
         document.getElementById("overlay").style.display = "block";
-        document.getElementById("popup").style.display = "block";
+        document.getElementById("add-item-popup").style.display = "block";
+        document.body.classList.add("no-scroll");
     });
 
     // closes popup
@@ -17,7 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let menuTypeInput = document.querySelector("#menu-type");
 
         document.getElementById("overlay").style.display = "none";
-        document.getElementById("popup").style.display = "none";
+        document.getElementById("add-item-popup").style.display = "none";
+        document.body.classList.remove("no-scroll");
 
         console.log("In " + menuTypeInput.value + " put " + itemNameInput.value + " which costs $" + priceInput.value + ". It is " + 
         servingsInput.value + " and has " + caloriesInput.value + " calories, " + fatInput.value + "g fat, " + 

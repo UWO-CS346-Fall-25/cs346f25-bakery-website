@@ -37,13 +37,17 @@
     </section>
 
     <% if (user) { %>
-      <button id="new-menu-item">Add New Item</button>
+      <div class="new-item-wrapper">
+        <button id="new-menu-item">Add New Item</button>
+      </div>
     <% } %>
+
+
 
 
     <div id="overlay"></div>
 
-    <div id="popup">
+    <div id="add-item-popup">
       <h2>New Menu Item:</h2>
       <form action="/menu" method="POST" enctype="multipart/form-data">
 
@@ -101,23 +105,25 @@
         <button type="submit">Submit</button>
       </form>
 
-      <button id="close-popup">Close</button>
+      <button id="close-popup">X</button>
     </div>
 
-    <section class="menu-category">
-      <h2><a href="/bakery-menu">Bakery Items</a></h2>
-      <img src="img/bakery-items-image.jpg" alt="Bakery Item">
-    </section>
+    <div class="menu-row">
+      <section class="menu-category">
+        <h2><a href="/bakery-menu">Bakery Items</a></h2>
+        <img src="img/bakery-items-image.jpg" alt="Bakery Item">
+      </section>
 
-    <section class="menu-category">
-      <h2><a href="/foods-menu">Food Items</a></h2>
-      <img src="img/foods-items-image.jpg" alt="Foods Item">
-    </section>
+      <section class="menu-category">
+        <h2><a href="/foods-menu">Food Items</a></h2>
+        <img src="img/foods-items-image.jpg" alt="Foods Item">
+      </section>
 
-    <section class="menu-category">
-      <h2><a href="/drinks-menu">Drinks</a></h2>
-      <img src="img/drinks-items-image.jpg" alt="Bakery Item">
-    </section>
+      <section class="menu-category">
+        <h2><a href="/drinks-menu">Drinks</a></h2>
+        <img src="img/drinks-items-image.jpg" alt="Bakery Item">
+      </section>
+    </div>
     
 
   </main>

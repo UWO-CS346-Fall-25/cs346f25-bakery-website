@@ -16,6 +16,16 @@
           <li><a href="/">Home</a></li>
           <li><a href="/menu">Menu</a></li>
           <li><a href="/recipe/today">Recipe Of The Day</a></li>
+          <% if (user) { %>
+            <li>
+              <form action="/users/logout" method="POST" style="display: inline;">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="btn-link">Logout</button>
+              </form>
+            </li>
+          <% } else { %>
+            <li><a href="/users/login">Login</a></li>
+          <% } %>
         </ul>
       </div>
     </nav>
@@ -44,6 +54,11 @@
           </div>
           
         </form>
+    </div>
+
+    <div id="register-nav">
+      <p>Already have an account?</p>
+      <a class="nutr-btn"href="/users/login">Login</a>
     </div>
 
   </main>

@@ -1,13 +1,19 @@
+const supabase = require("../config/supabase");
 
-const bakeryItems = [
-  { id: "1", name: "Apple Pie", calories: 340, sugar: "18g", fat: "22g", protein: "6g" },
-  { id: "2", name: "Coffee", calories: 10, sugar: "35g", fat: "5g", protein: "5g" },
-  { id: "3", name: "Chicken Sandwich", calories: 450, sugar: "40g", fat: "25g", protein: "7g" }
-];
+exports.getNutrition = async (req, res) => {
+  const itemId = req.params.id;
 
-exports.getNutrition = (req, res) => {
-  const item = bakeryItems.find(i => String(i.id) === String(req.params.id)); //was worried about potential mismatch
-  res.json(item);
+  const { data, error } = await supabase
+    .from("menu_items")
+    .select("*")
+    .eq("id", itemId)
+    .single();
+
+  if (error || !data) {
+    console.error(error);
+    return res.status(404).json({ error: "Item not found" });
+  }
+
+  res.json(data);
 };
-
 
