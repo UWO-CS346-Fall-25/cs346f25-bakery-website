@@ -29,11 +29,15 @@ router.post("/", upload.single("img_url"), csrfProtection, async (req, res) => {
 
     let img_url = null;
 
+    let uploadError = null;
+
     if (req.file) {
       const fileName = `${Date.now()}_${req.file.originalname}`;
-      const { error: uploadError } = await supabase.storage
+      const { error } = await supabase.storage
         .from("images")
         .upload(fileName, req.file.buffer, { contentType: req.file.mimetype });
+
+      uploadError = error;
 
       if (uploadError) {
         console.error(uploadError);

@@ -41,7 +41,10 @@
           <button class="nutr-btn"><%= item.item_name %></button>
 
           <!-- stored image -->
-          <img src="<%= item.img_url %>" alt="<%= item.item_name %>">
+           <div class="img-wrapper">
+              <img src="<%= item.img_url %>" alt="<%= item.item_name %>">
+           </div>
+          
 
           <p class="item-info">
             $<%= item.price %> • <%= item.size_servings %>

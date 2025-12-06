@@ -273,7 +273,7 @@ ul{
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 20px;
   list-style: none;
   padding: 0;
@@ -281,15 +281,19 @@ ul{
 }
 
 .nutr-btn {
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   background: none;
   border: none;
   cursor: pointer;
-  width: 6vw;
-  height: 2vw;
-  font-size: 1.25rem;
+
+  padding: 6px 12px;       /* replaces vw scaling */
+  font-size: 1.1rem;
   font-weight: 600;
   font-family: "Trebuchet MS", Arial, sans-serif;
+
+  display: inline-block;   /* ensures proper centering */
+  text-align: center;
+
 }
 
 .nutr-btn:hover {
@@ -299,7 +303,7 @@ ul{
 
 .menu-item {
   background: #fff;
-  border: 2px solid #d8cfc4;        /* parchment border */
+  border: 2px solid #d8cfc4;
   border-radius: 10px;
   padding: 15px;
   text-align: center;
@@ -309,10 +313,23 @@ ul{
   align-items: center;
 }
 
+.menu-item .img-wrapper {
+  width: 100%;
+  height: 200px;             
+  border-radius: 12px;       
+  overflow: hidden;          
+  margin-bottom: 10px;
+
+}
+
+
 .menu-item img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        
   display: block;
-  width: 15vw;
-  height: 15vw;
+  border-radius: 0;
+
 }
 
 .location,
