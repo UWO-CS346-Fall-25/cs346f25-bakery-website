@@ -22,6 +22,7 @@ exports.getRegister = (req, res) => {
     res.render('users/register', {
       title: 'Register',
       csrfToken: req.csrfToken(),
+      error: null
     });
   } catch (err) {
     console.error(`[${new Date().toISOString()}] [UserController] Error rendering registration page:`, err.message);
@@ -39,8 +40,30 @@ exports.getRegister = (req, res) => {
  * Process registration form
  */
 exports.postRegister = async (req, res, next) => {
-  const { email } = req.body;
+  const { email, password, "confirm-password": confirmPassword } = req.body;
   console.log(`[${new Date().toISOString()}] [UserController] Starting registration for email: ${email}`);
+
+    //check password length
+  if (password.length < 8) {
+    console.warn(`[${new Date().toISOString()}] [UserController] Password too short for ${email}`);
+    return res.render('users/register', {
+      title: 'Register',
+      error: 'Password must be at least 8 characters long.',
+      csrfToken: req.csrfToken(),
+    });
+  }
+  
+  //ensure passwords match
+  if (password !== confirmPassword) {
+    console.warn(`[${new Date().toISOString()}] [UserController] Passwords do not match for ${email}`);
+    return res.render('users/register', {
+      title: 'Register',
+      error: 'Passwords do not match.',
+      csrfToken: req.csrfToken(),
+    });
+  }
+
+
 
   try {
     console.log(`[${new Date().toISOString()}] [UserController] Calling Supabase signUp for ${email}`);

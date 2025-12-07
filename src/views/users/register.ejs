@@ -42,16 +42,24 @@
 
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required="email">
-            <span id="email-error" class="error-message"></span>
+            <input type="email" id="email" name="email" required>
           </div>
 
           <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required="password">
-            <span id="password-error" class="error-message"></span>
-          <button type="submit">Submit</button>
+            <input type="password" id="password" name="password" required>
           </div>
+
+          <div class="form-group">
+            <label for="password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+          </div>
+
+          <% if (error) { %>
+            <div id="login-error" class="error-message"><%= error %></div>
+          <% } %>
+          
+          <button type="submit">Submit</button>
           
         </form>
     </div>
