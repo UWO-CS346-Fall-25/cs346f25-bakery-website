@@ -1,4 +1,56 @@
-# CS346 Project Template Documentation
+# Bakery Website
+
+This website is an informational website for a bakery to be viewed by potential customers and updated by authorized persons. The website allows for bakery owners to easily update menu information including the uploading of images and other information.
+
+## Week 7
+
+- Created home page
+- Created menu page
+- Created 3 sub-menu pages
+- Created login page
+
+## Week 8
+
+- Added functionality to home page allowing it to show whether the bakery is open or not depending on the time of the day
+- Created pop-ups to display information about specific menu items
+
+## Week 9
+
+- Re-styled login screen and added validation to the form
+- Tweaked UI of the nutrition pop-ups
+- Re-designed menu screen so that it now displays in a grid format
+- Each item will now have a paragraph below listing size and price
+
+## Week 10
+
+- Set up Supabase and connected it to project
+- Set up Multer middleware allowing for the uploading of images
+
+## Week 11
+
+- Created registration page (in the future this may be changed so that not all users can create an account, however for the sake of the project I will keep it as is for now)
+- Updated login page allowing for easy access to registration page
+- Linked login form to supabase auth
+- Set up confirmation email through supabase
+- Created button that only appears to logged in user allowing for them to add to the menu
+
+## Week 12
+
+- Set up API calls to Spoonacular allowing for a random baking recipe to be selected each day
+- Created "Recipe of the Day" page
+
+## Week 13
+
+- Completely updated UI to fit the bakery theme better
+   - Changed color scheme
+   - Re-designed pop-ups
+   - Re-designed login and register pages
+   - Re-designed menu and sub-menu pages
+- The sub-menus now read from supabase
+- Each item in the sub-menu has a nutrition pop-up that also reads from supabase
+- Added logging
+- Implemented rendering to user friendly error page
+- Fixed issue in which recipe of the day would reset along with server, information is now stored in a json
 
 ## Overview
 
