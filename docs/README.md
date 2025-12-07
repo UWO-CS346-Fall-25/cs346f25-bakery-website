@@ -51,6 +51,8 @@ This website is an informational website for a bakery to be viewed by potential 
 - Added logging
 - Implemented rendering to user friendly error page
 - Fixed issue in which recipe of the day would reset along with server, information is now stored in a json
+- Added error message on login screen if incorrect credentials were entered
+- Added validation along with error messages to registration screen to ensure passwords match and are at least 8 characters long
 
 ## Overview
 
