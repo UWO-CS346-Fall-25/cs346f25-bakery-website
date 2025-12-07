@@ -1,5 +1,15 @@
 const supabase = require("../config/supabase");
 
+/**
+ * Controller: getNutrition
+ *
+ * Responsibilities:
+ * - Retrieve a single menu item by ID from the database
+ * - If found → return JSON data
+ * - If not found → render error.ejs with 404 status
+ * - If unexpected error → render error.ejs with 500 status
+ */
+
 exports.getNutrition = async (req, res) => {
   const itemId = req.params.id;
   console.log(`[${new Date().toISOString()}] [NutritionController] Starting getNutrition for itemId: ${itemId}`);

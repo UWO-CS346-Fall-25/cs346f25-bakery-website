@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#new-menu-item").addEventListener("click", () => {
+        //displays popup
         document.getElementById("overlay").style.display = "block";
         document.getElementById("add-item-popup").style.display = "block";
         document.body.classList.add("no-scroll");

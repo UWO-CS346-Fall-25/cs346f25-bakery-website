@@ -2,15 +2,28 @@ const { fetchRandomBakingRecipe } = require("../services/recipeService");
 const csrf = require("csurf");
 const csrfProtection = csrf({ cookie: false });
 
+/**
+ * GET /recipe/today
+ * Controller: getRecipeOfTheDay
+ *
+ * Responsibilities:
+ * - Call recipeService to fetch a random recipe
+ * - Handle success by rendering recipeOfDay.ejs
+ * - Handle failures and render error.ejs
+ * - Inject user session + CSRF token into the view
+ */
 async function getRecipeOfTheDay(req, res) {
   console.log(`[${new Date().toISOString()}] [RecipeController] Starting getRecipeOfTheDay`);
 
   try {
     console.log(`[${new Date().toISOString()}] [RecipeController] Calling fetchRandomBakingRecipe service...`);
+
+    // Fetch the recipe of the day from the recipe service
     const recipe = await fetchRandomBakingRecipe();
 
     console.log(`[${new Date().toISOString()}] [RecipeController] Successfully fetched recipe: ${recipe.name || 'Unnamed recipe'}`);
 
+    // Render the recipe page with data and CSRF protection
     res.render("recipeOfDay", { 
       recipe,
       user: req.session.user || null,

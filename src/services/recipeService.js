@@ -5,9 +5,21 @@ const fs = require("fs");
 const path = require("path");
 const cachePath = path.join(__dirname, "recipeCache.json");
 
+/**
+ * fetchRandomBakingRecipe()
+ *
+ * Responsibilities:
+ * - Load recipe cache (if file exists)
+ * - Check whether a recipe has already been fetched today
+ * - If cached & same day → return it
+ * - Otherwise fetch a new recipe from Spoonacular
+ * - Save the new recipe + today's date to cache
+ * - Return the recipe object
+ */
 async function fetchRandomBakingRecipe() {
   let cache = { recipe: null, date: null };
 
+  //Load the cached file if it exists. If reading/parsing fails, reset the cache to empty
   if (fs.existsSync(cachePath)) {
     try {
       cache = JSON.parse(fs.readFileSync(cachePath, "utf-8"));
@@ -24,6 +36,7 @@ async function fetchRandomBakingRecipe() {
     return cache.recipe;
   }
 
+  //fetch new random dessert recipe
   const url = `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&tags=dessert`;
 
   const res = await fetch(url);
