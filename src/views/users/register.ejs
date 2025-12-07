@@ -11,11 +11,21 @@
   <header>
     <nav>
       <div class="container">
-        <a href="/" class="logo">Fuzzy Lambs</a>
+        <a href="/" class="logo">Lambs Cafe and Bakery</a>
         <ul class="nav-links">
           <li><a href="/">Home</a></li>
           <li><a href="/menu">Menu</a></li>
           <li><a href="/recipe/today">Recipe Of The Day</a></li>
+          <% if (user) { %>
+            <li>
+              <form action="/users/logout" method="POST" style="display: inline;">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="btn-link">Logout</button>
+              </form>
+            </li>
+          <% } else { %>
+            <li><a href="/users/login">Login</a></li>
+          <% } %>
         </ul>
       </div>
     </nav>
@@ -26,28 +36,43 @@
       <h1>Register</h1>
       
     </section>
-    <div id="register">
-        <form id="register-form" action="/users/register" method="POST">
+    <div class="login">
+        <form class="login-form" action="/users/register" method="POST">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required="email">
-            <span id="email-error" class="error-message"></span>
+            <input type="email" id="email" name="email" required>
           </div>
 
           <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required="password">
-            <span id="password-error" class="error-message"></span>
-          <button type="submit">Submit</button>
+            <input type="password" id="password" name="password" required>
           </div>
+
+          <div class="form-group">
+            <label for="password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+          </div>
+
+          <% if (error) { %>
+            <div id="login-error" class="error-message"><%= error %></div>
+          <% } %>
+          
+          <button type="submit">Submit</button>
           
         </form>
     </div>
+
+    <div id="register-nav">
+      <p>Already have an account?</p>
+      <a class="nutr-btn"href="/users/login">Login</a>
+    </div>
+
+  </main>
   <footer>
     <div class="container">
-      <p>&copy; 2025 Fuzzy Lambs Cafe and Bakery. All rights reserved.</p>
+      <p>&copy; 2025 Lambs Cafe and Bakery. All rights reserved.</p>
     </div>
   </footer>
 

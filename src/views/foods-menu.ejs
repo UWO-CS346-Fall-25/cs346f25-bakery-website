@@ -10,7 +10,7 @@
   <header>
     <nav>
       <div class="container">
-        <a href="/" class="logo">Fuzzy Lambs</a>
+        <a href="/" class="logo">Lambs Cafe and Bakery</a>
         <ul class="nav-links">
           <li><a href="/">Home</a></li>
           <li><a href="/menu">Menu</a></li>
@@ -36,11 +36,20 @@
     </section>
 
     <ul class="menu-grid">
-        <li class="menu-item" data-id="3">
-          <button class = "nutr-btn">Sandwich</button>
-          <img src="img/foods-items-image.jpg" alt="Bakery Item">
-          <p class="item-info">$7.99</p>
+      <% items.forEach(item => { %>
+        <li class="menu-item" data-id="<%= item.id %>">
+          <button class="nutr-btn"><%= item.item_name %></button>
+
+          <!-- stored image -->
+          <div class="img-wrapper">
+              <img src="<%= item.img_url %>" alt="<%= item.item_name %>">
+           </div>
+
+          <p class="item-info">
+            $<%= item.price %> • <%= item.size_servings %>
+          </p>
         </li>
+      <% }) %>
     </ul>
 
     <div id="overlay"></div>
@@ -56,7 +65,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2025 Fuzzy Lambs Cafe and Bakery. All rights reserved.</p>
+      <p>&copy; 2025 Lambs Cafe and Bakery. All rights reserved.</p>
     </div>
   </footer>
 

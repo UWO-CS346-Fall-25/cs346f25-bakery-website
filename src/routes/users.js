@@ -32,12 +32,12 @@ const userController = require('../controllers/userController');
 // Define routes
 // router.get('/register', userController.getRegister);
 // router.post('/register', userController.postRegister);
-router.get("/register", csrfProtection, userController.getRegister);
-router.post("/register", csrfProtection, userController.postRegister);
+router.get('/register', csrfProtection, userController.getRegister);
+router.post('/register', csrfProtection, userController.postRegister);
 
-router.get("/login", csrfProtection, userController.getLogin);
-router.post("/login", csrfProtection, userController.postLogin);
+router.get('/login', csrfProtection, userController.getLogin);
+router.post('/login', csrfProtection, userController.postLogin);
 
-router.post("/logout", userController.postLogout);
+router.post('/logout', userController.postLogout);
 
 module.exports = router;

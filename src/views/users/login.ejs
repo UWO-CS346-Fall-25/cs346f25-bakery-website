@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %> - CS346 Project</title>
   <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/loginValidation.js" defer></script>
 </head>
 <body>
   <header>
     <nav>
       <div class="container">
-        <a href="/" class="logo">Fuzzy Lambs</a>
+        <a href="/" class="logo">Lambs Cafe and Bakery</a>
         <ul class="nav-links">
           <li><a href="/">Home</a></li>
           <li><a href="/menu">Menu</a></li>
@@ -36,34 +35,40 @@
       <h1>Login</h1>
       
     </section>
-    <div id="login">
-      <form id="login-form" action="/users/login" method="POST">
+    <div class="login">
+      <form class="login-form" action="/users/login" method="POST">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
         <div class="form-group">
           <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required="email">
-          <span id="email-error" class="error-message"></span>
+          <input type="email" id="email" name="email" required>
         </div>
 
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required="password">
-          <span id="password-error" class="error-message"></span>
-        <button type="submit">Submit</button>
+          <input type="password" id="password" name="password" required>
         </div>
+
+        <% if (error) { %>
+          <div id="login-error" class="error-message"><%= error %></div>
+        <% } %>
+
+
+        <button type="submit">Submit</button>
         
       </form>
     </div>
 
     <div id="register-nav">
       <p>Don't have an account?</p>
-      <a class="btn"href="/users/register">Register</a>
+      <a class="nutr-btn"href="/users/register">Register</a>
     </div>
+  
+  </main>
 
   <footer>
     <div class="container">
-      <p>&copy; 2025 Fuzzy Lambs Cafe and Bakery. All rights reserved.</p>
+      <p>&copy; 2025 Lambs Cafe and Bakery. All rights reserved.</p>
     </div>
   </footer>
 

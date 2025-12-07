@@ -10,7 +10,7 @@
   <header>
     <nav>
       <div class="container">
-        <a href="/" class="logo">CS346 Project</a>
+        <a href="/" class="logo">Lambs Cafe and Bakery</a>
         <ul class="nav-links">
           <li><a href="/">Home</a></li>
         </ul>
@@ -20,15 +20,8 @@
 
   <main class="container">
     <div class="error-page">
-      <h1><%= error.status || 500 %></h1>
+      <h1><%= title %></h1>
       <h2><%= message %></h2>
-      
-      <% if (error.stack) { %>
-        <div class="error-details">
-          <h3>Error Details (Development Only)</h3>
-          <pre><%= error.stack %></pre>
-        </div>
-      <% } %>
 
       <a href="/" class="btn">Go Back Home</a>
     </div>
@@ -36,7 +29,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2024 CS346 Project. All rights reserved.</p>
+      <p>&copy; 2025 Lambs Cafe and Bakery. All rights reserved.</p>
     </div>
   </footer>
 </body>
