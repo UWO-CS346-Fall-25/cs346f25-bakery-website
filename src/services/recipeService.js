@@ -1,16 +1,27 @@
 require("dotenv").config();
 
 const API_KEY = process.env.SPOONACULAR_API_KEY;
-
-let cachedRecipe = null;
-let cachedDate = null;
+const fs = require("fs");
+const path = require("path");
+const cachePath = path.join(__dirname, "recipeCache.json");
 
 async function fetchRandomBakingRecipe() {
-    const today = new Date().toISOString().split("T")[0];
+  let cache = { recipe: null, date: null };
 
-  // If recipe was already called today return it
-  if (cachedRecipe && cachedDate === today) {
-    return cachedRecipe;
+  if (fs.existsSync(cachePath)) {
+    try {
+      cache = JSON.parse(fs.readFileSync(cachePath, "utf-8"));
+    } catch (err) {
+      console.error("Failed to read cache file:", err.message);
+      cache = { recipe: null, date: null };
+    }
+  }
+
+  const today = new Date().toISOString().split("T")[0];
+
+  // Return cached recipe if it's from today
+  if (cache.recipe && cache.date === today) {
+    return cache.recipe;
   }
 
   const url = `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&tags=dessert`;
@@ -25,8 +36,12 @@ async function fetchRandomBakingRecipe() {
 
   const recipe = data.recipes[0];
 
-  cachedRecipe = recipe;
-  cachedDate = today;
+  try {
+    fs.writeFileSync(cachePath, JSON.stringify({ recipe, date: today }));
+  } catch (err) {
+    console.error("Failed to write cache file:", err.message);
+  }
+
   
   return recipe; // Spoonacular returns an array
 }

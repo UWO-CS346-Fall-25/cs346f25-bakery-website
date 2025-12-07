@@ -18,66 +18,49 @@
  * GET /
  * Display the home page
  */
-exports.getHome = async (req, res, next) => {
-  try {
-    // Fetch any data needed for the home page
-    // const data = await SomeModel.findAll();
+exports.getHome = async (req, res, next) => { 
+  console.log(`[${new Date().toISOString()}] [PageController] Starting getHome`);
 
+  try {
     res.render('index', {
       title: 'Home',
-      // data: data,
       csrfToken: req.csrfToken(),
     });
+
+    console.log(`[${new Date().toISOString()}] [PageController] Successfully rendered Home page`);
   } catch (error) {
-    next(error);
+    console.error(`[${new Date().toISOString()}] [PageController] Error rendering Home page:`, error.message);
+    
+    res.status(500).render("error", {
+      title: "Something Went Wrong",
+      message: "Oops! We encountered an error while loading the Home page. Please try again later.",
+      error: process.env.NODE_ENV === "development" ? error : {}
+    });
+
   }
 };
 
 /**
  * GET /menu
- * Display the about page
+ * Display the menu page
  */
 exports.getMenu = async (req, res, next) => {
+  console.log(`[${new Date().toISOString()}] [PageController] Starting getMenu`);
+
   try {
     res.render('menu', {
       title: 'Menu',
       csrfToken: req.csrfToken(),
     });
-  } catch (error) {
-    next(error);
-  }
-};
 
-exports.getFoodsMenu = async (req, res, next) => {
-  try {
-    res.render('foods-menu', {
-      title: 'Food Items',
-      csrfToken: req.csrfToken(),
-    });
+    console.log(`[${new Date().toISOString()}] [PageController] Successfully rendered Menu page`);
   } catch (error) {
-    next(error);
+    console.error(`[${new Date().toISOString()}] [PageController] Error rendering Menu page:`, error.message);
+    
+    res.status(500).render("error", {
+      title: "Something Went Wrong",
+      message: "Oops! We encountered an error while loading the Menu page. Please try again later.",
+      error: process.env.NODE_ENV === "development" ? error : {}
+    });
   }
 };
-
-exports.getDrinksMenu = async (req, res, next) => {
-  try {
-    res.render('drinks-menu', {
-      title: 'Food Items',
-      csrfToken: req.csrfToken(),
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
-exports.getBakeryMenu = async (req, res, next) => {
-  try {
-    res.render('bakery-menu', {
-      title: 'Bakery Items',
-      csrfToken: req.csrfToken(),
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-// Add more controller methods as needed
