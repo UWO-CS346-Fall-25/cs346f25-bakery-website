@@ -1,19 +1,18 @@
 :root {
-  --primary-color: #5a4632;      /* rich espresso brown */
-  --secondary-color: #8b8d7a;    /* muted herbal gray-green */
-  --success-color: #6c8f5a;      /* natural leafy green */
-  --danger-color: #b14f4f;       /* muted berry red */
-  --warning-color: #d6a85b;      /* warm honey-gold */
-  --info-color: #7ca4a8;         /* soft calming teal */
-  --light-color: #f4efe8;        /* warm cream */
-  --dark-color: #3c2f23;         /* dark roast brown */
+  --primary-color: #5a4632; /* rich espresso brown */
+  --secondary-color: #8b8d7a; /* muted herbal gray-green */
+  --success-color: #6c8f5a; /* natural leafy green */
+  --danger-color: #b14f4f; /* muted berry red */
+  --warning-color: #d6a85b; /* warm honey-gold */
+  --info-color: #7ca4a8; /* soft calming teal */
+  --light-color: #f4efe8; /* warm cream */
+  --dark-color: #3c2f23; /* dark roast brown */
   --font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
     Arial, sans-serif;
   --border-radius: 4px;
   --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
 }
-
 
 /* Reset/Base Styles */
 * {
@@ -25,8 +24,8 @@
 body {
   font-family: var(--font-family);
   line-height: 1.6;
-  color: #3c2f23;                    /* warm dark roast text */
-  background-color: #f4efe8;         /* warm café cream background */
+  color: #3c2f23; /* warm dark roast text */
+  background-color: #f4efe8; /* warm café cream background */
 }
 
 a {
@@ -108,8 +107,8 @@ main {
 .hero {
   text-align: center;
   padding: 3rem 0;
-  background-color: #e6ddcf;        /* latte beige */
-  color: #3c2f23;                   /* dark roast text */
+  background-color: #e6ddcf; /* latte beige */
+  color: #3c2f23; /* dark roast text */
   border-radius: var(--border-radius);
   margin-bottom: 2rem;
   width: 100vw;
@@ -232,7 +231,7 @@ main {
 }
 
 .btn:hover {
-  background-color: #4a3827;      /* deeper espresso */
+  background-color: #4a3827; /* deeper espresso */
   text-decoration: none;
 }
 
@@ -273,7 +272,7 @@ main {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   transition: 0.2s ease;
 }
 
@@ -281,7 +280,6 @@ main {
   background: #4b392b;
   transform: translateY(-2px);
 }
-
 
 .menu-row {
   display: flex;
@@ -314,8 +312,7 @@ main {
   display: block;
 }
 
-
-ul{
+ul {
   list-style-type: none;
 }
 
@@ -334,14 +331,13 @@ ul{
   border: none;
   cursor: pointer;
 
-  padding: 6px 12px;       /* replaces vw scaling */
+  padding: 6px 12px; /* replaces vw scaling */
   font-size: 1.1rem;
   font-weight: 600;
-  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
 
-  display: inline-block;   /* ensures proper centering */
+  display: inline-block; /* ensures proper centering */
   text-align: center;
-
 }
 
 .nutr-btn:hover {
@@ -363,21 +359,18 @@ ul{
 
 .menu-item .img-wrapper {
   width: 100%;
-  height: 200px;             
-  border-radius: 12px;       
-  overflow: hidden;          
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
   margin-bottom: 10px;
-
 }
 
-
-.menu-item img{
+.menu-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;        
+  object-fit: cover;
   display: block;
   border-radius: 0;
-
 }
 
 .location,
@@ -406,8 +399,7 @@ ul{
   box-shadow: 0 4px 10px rgba(80, 70, 60, 0.15);
 }
 
-
-.login-form button[type="submit"] {
+.login-form button[type='submit'] {
   width: 100%;
   padding: 0.75rem 1.5rem;
   background-color: var(--primary-color);
@@ -423,10 +415,9 @@ ul{
   transition: background 0.2s ease;
 }
 
-.login-form button[type="submit"]:hover {
+.login-form button[type='submit']:hover {
   background-color: #4a3827;
 }
-
 
 .form-group {
   display: flex;
@@ -455,14 +446,13 @@ ul{
 
 /* Error message */
 .error-message {
-  color: #b14f4f;       /* muted berry red */
+  color: #b14f4f; /* muted berry red */
   font-size: 0.9rem;
   margin-top: 4px;
   height: 16px;
 }
 
-
-#open-or-not{
+#open-or-not {
   text-align: center;
 }
 
@@ -472,7 +462,7 @@ ul{
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(3px);
   display: none;
   z-index: 90;
@@ -489,7 +479,7 @@ ul{
   width: 350px;
   max-width: 90%;
   border-radius: 16px;
-  box-shadow: 
+  box-shadow:
     0px 12px 32px rgba(0, 0, 0, 0.25),
     0px 4px 12px rgba(0, 0, 0, 0.15);
   display: none;
@@ -530,7 +520,7 @@ ul{
 
 /* Close button */
 #close-popup {
-width: 100%;
+  width: 100%;
   padding: 0.75rem 1.5rem;
   background-color: var(--primary-color);
   color: white;
@@ -548,9 +538,8 @@ width: 100%;
   background-color: #4a3827;
 }
 
-
 #add-item-popup {
-    position: fixed;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -562,12 +551,11 @@ width: 100%;
   background: #fff;
   padding: 2rem 2.5rem;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 
   z-index: 10000;
-  display: none;             /* toggled by JS */
-  font-family: "Trebuchet MS", Arial, sans-serif;
-
+  display: none; /* toggled by JS */
+  font-family: 'Trebuchet MS', Arial, sans-serif;
 }
 
 #add-item-popup h2 {
@@ -595,7 +583,6 @@ width: 100%;
   cursor: pointer;
   color: var(--danger-color);
   z-index: 10001;
-
 }
 
 #add-item-popup #close-popup:hover {
@@ -640,7 +627,7 @@ width: 100%;
 }
 
 /* ===== Submit Button (bottom center) ===== */
-#add-item-popup button[type="submit"] {
+#add-item-popup button[type='submit'] {
   position: absolute;
   bottom: 15px;
   left: 50%;
@@ -657,7 +644,7 @@ width: 100%;
   transition: background 0.2s;
 }
 
-#add-item-popup button[type="submit"]:hover {
+#add-item-popup button[type='submit']:hover {
   background: #4b392b;
 }
 
@@ -666,16 +653,14 @@ width: 100%;
   height: 100vh;
 }
 
-
-
-.error-message{
+.error-message {
   color: var(--danger-color);
   font-size: 0.9em;
   font-style: italic;
   display: block;
 }
 
-#register-nav{
+#register-nav {
   margin: 1rem;
   display: flex;
   justify-content: center;
@@ -683,13 +668,13 @@ width: 100%;
   gap: 1rem;
 }
 
-#register-nav .nutr-btn{
-  font-size: inherit;    
-  font-family: inherit;    
-  margin: 0.25rem 0.5rem;  
-  display: inline-block;   
-  vertical-align: middle;   
-  gap: 0;                   
+#register-nav .nutr-btn {
+  font-size: inherit;
+  font-family: inherit;
+  margin: 0.25rem 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
+  gap: 0;
 }
 
 /* Footer */
@@ -716,5 +701,3 @@ footer {
     grid-template-columns: 1fr;
   }
 }
-
-

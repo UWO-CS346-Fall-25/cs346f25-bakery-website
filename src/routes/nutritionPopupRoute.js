@@ -6,4 +6,3 @@ const nutritionController = require('../controllers/nutritionPopupController');
 router.get('/nutrition/:id', nutritionController.getNutrition);
 
 module.exports = router;
-

@@ -1,9 +1,9 @@
-require("dotenv").config();
+require('dotenv').config();
 
 const API_KEY = process.env.SPOONACULAR_API_KEY;
-const fs = require("fs");
-const path = require("path");
-const cachePath = path.join(__dirname, "recipeCache.json");
+const fs = require('fs');
+const path = require('path');
+const cachePath = path.join(__dirname, 'recipeCache.json');
 
 /**
  * fetchRandomBakingRecipe()
@@ -22,14 +22,14 @@ async function fetchRandomBakingRecipe() {
   //Load the cached file if it exists. If reading/parsing fails, reset the cache to empty
   if (fs.existsSync(cachePath)) {
     try {
-      cache = JSON.parse(fs.readFileSync(cachePath, "utf-8"));
+      cache = JSON.parse(fs.readFileSync(cachePath, 'utf-8'));
     } catch (err) {
-      console.error("Failed to read cache file:", err.message);
+      console.error('Failed to read cache file:', err.message);
       cache = { recipe: null, date: null };
     }
   }
 
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toISOString().split('T')[0];
 
   // Return cached recipe if it's from today
   if (cache.recipe && cache.date === today) {
@@ -42,7 +42,7 @@ async function fetchRandomBakingRecipe() {
   const res = await fetch(url);
 
   if (!res.ok) {
-    throw new Error("Failed to fetch recipe from Spoonacular");
+    throw new Error('Failed to fetch recipe from Spoonacular');
   }
 
   const data = await res.json();
@@ -52,10 +52,9 @@ async function fetchRandomBakingRecipe() {
   try {
     fs.writeFileSync(cachePath, JSON.stringify({ recipe, date: today }));
   } catch (err) {
-    console.error("Failed to write cache file:", err.message);
+    console.error('Failed to write cache file:', err.message);
   }
 
-  
   return recipe; // Spoonacular returns an array
 }
 

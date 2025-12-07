@@ -18,8 +18,10 @@
  * GET /
  * Display the home page
  */
-exports.getHome = async (req, res, next) => { 
-  console.log(`[${new Date().toISOString()}] [PageController] Starting getHome`);
+exports.getHome = async (req, res) => {
+  console.log(
+    `[${new Date().toISOString()}] [PageController] Starting getHome`
+  );
 
   try {
     res.render('index', {
@@ -27,16 +29,21 @@ exports.getHome = async (req, res, next) => {
       csrfToken: req.csrfToken(),
     });
 
-    console.log(`[${new Date().toISOString()}] [PageController] Successfully rendered Home page`);
+    console.log(
+      `[${new Date().toISOString()}] [PageController] Successfully rendered Home page`
+    );
   } catch (error) {
-    console.error(`[${new Date().toISOString()}] [PageController] Error rendering Home page:`, error.message);
-    
-    res.status(500).render("error", {
-      title: "Something Went Wrong",
-      message: "Oops! We encountered an error while loading the Home page. Please try again later.",
-      error: process.env.NODE_ENV === "development" ? error : {}
-    });
+    console.error(
+      `[${new Date().toISOString()}] [PageController] Error rendering Home page:`,
+      error.message
+    );
 
+    res.status(500).render('error', {
+      title: 'Something Went Wrong',
+      message:
+        'Oops! We encountered an error while loading the Home page. Please try again later.',
+      error: process.env.NODE_ENV === 'development' ? error : {},
+    });
   }
 };
 
@@ -44,8 +51,10 @@ exports.getHome = async (req, res, next) => {
  * GET /menu
  * Display the menu page
  */
-exports.getMenu = async (req, res, next) => {
-  console.log(`[${new Date().toISOString()}] [PageController] Starting getMenu`);
+exports.getMenu = async (req, res) => {
+  console.log(
+    `[${new Date().toISOString()}] [PageController] Starting getMenu`
+  );
 
   try {
     res.render('menu', {
@@ -53,14 +62,20 @@ exports.getMenu = async (req, res, next) => {
       csrfToken: req.csrfToken(),
     });
 
-    console.log(`[${new Date().toISOString()}] [PageController] Successfully rendered Menu page`);
+    console.log(
+      `[${new Date().toISOString()}] [PageController] Successfully rendered Menu page`
+    );
   } catch (error) {
-    console.error(`[${new Date().toISOString()}] [PageController] Error rendering Menu page:`, error.message);
-    
-    res.status(500).render("error", {
-      title: "Something Went Wrong",
-      message: "Oops! We encountered an error while loading the Menu page. Please try again later.",
-      error: process.env.NODE_ENV === "development" ? error : {}
+    console.error(
+      `[${new Date().toISOString()}] [PageController] Error rendering Menu page:`,
+      error.message
+    );
+
+    res.status(500).render('error', {
+      title: 'Something Went Wrong',
+      message:
+        'Oops! We encountered an error while loading the Menu page. Please try again later.',
+      error: process.env.NODE_ENV === 'development' ? error : {},
     });
   }
 };

@@ -10,52 +10,62 @@
 
 // Import models
 // const User = require('../models/User');
-const supabase = require("../config/supabase");
+const supabase = require('../config/supabase');
 
 /**
  * GET /users/register
  * Display registration form
  */
 exports.getRegister = (req, res) => {
-  console.log(`[${new Date().toISOString()}] [UserController] Rendering registration page`);
+  console.log(
+    `[${new Date().toISOString()}] [UserController] Rendering registration page`
+  );
   try {
     res.render('users/register', {
       title: 'Register',
       csrfToken: req.csrfToken(),
-      error: null
+      error: null,
     });
   } catch (err) {
-    console.error(`[${new Date().toISOString()}] [UserController] Error rendering registration page:`, err.message);
-    res.status(500).render("error", {
-      title: "Something Went Wrong",
-      message: "Unable to load the registration page. Please try again later.",
-      error: process.env.NODE_ENV === "development" ? err : {}
+    console.error(
+      `[${new Date().toISOString()}] [UserController] Error rendering registration page:`,
+      err.message
+    );
+    res.status(500).render('error', {
+      title: 'Something Went Wrong',
+      message: 'Unable to load the registration page. Please try again later.',
+      error: process.env.NODE_ENV === 'development' ? err : {},
     });
-
-  };
-}
+  }
+};
 
 /**
  * POST /users/register
  * Process registration form
  */
-exports.postRegister = async (req, res, next) => {
-  const { email, password, "confirm-password": confirmPassword } = req.body;
-  console.log(`[${new Date().toISOString()}] [UserController] Starting registration for email: ${email}`);
+exports.postRegister = async (req, res) => {
+  const { email, password, 'confirm-password': confirmPassword } = req.body;
+  console.log(
+    `[${new Date().toISOString()}] [UserController] Starting registration for email: ${email}`
+  );
 
-    //check password length
+  //check password length
   if (password.length < 8) {
-    console.warn(`[${new Date().toISOString()}] [UserController] Password too short for ${email}`);
+    console.warn(
+      `[${new Date().toISOString()}] [UserController] Password too short for ${email}`
+    );
     return res.render('users/register', {
       title: 'Register',
       error: 'Password must be at least 8 characters long.',
       csrfToken: req.csrfToken(),
     });
   }
-  
+
   //ensure passwords match
   if (password !== confirmPassword) {
-    console.warn(`[${new Date().toISOString()}] [UserController] Passwords do not match for ${email}`);
+    console.warn(
+      `[${new Date().toISOString()}] [UserController] Passwords do not match for ${email}`
+    );
     return res.render('users/register', {
       title: 'Register',
       error: 'Passwords do not match.',
@@ -63,17 +73,20 @@ exports.postRegister = async (req, res, next) => {
     });
   }
 
-
-
   try {
-    console.log(`[${new Date().toISOString()}] [UserController] Calling Supabase signUp for ${email}`);
-    const { data, error } = await supabase.auth.signUp({
+    console.log(
+      `[${new Date().toISOString()}] [UserController] Calling Supabase signUp for ${email}`
+    );
+    const { error } = await supabase.auth.signUp({
       email,
-      password: req.body.password
+      password: req.body.password,
     });
 
     if (error) {
-      console.error(`[${new Date().toISOString()}] [UserController] Registration error for ${email}:`, error.message);
+      console.error(
+        `[${new Date().toISOString()}] [UserController] Registration error for ${email}:`,
+        error.message
+      );
       return res.render('users/register', {
         title: 'Register',
         error: error.message,
@@ -81,18 +94,22 @@ exports.postRegister = async (req, res, next) => {
       });
     }
 
-    console.log(`[${new Date().toISOString()}] [UserController] Registration successful for ${email}`);
-    return res.redirect("/users/login");
-
+    console.log(
+      `[${new Date().toISOString()}] [UserController] Registration successful for ${email}`
+    );
+    return res.redirect('/users/login');
   } catch (err) {
-    console.error(`[${new Date().toISOString()}] [UserController] Unexpected error during registration:`, err.message);
-    
-    res.status(500).render("error", {
-      title: "Something Went Wrong",
-      message: "Unexpected error occurred during registration. Please try again later.",
-      error: process.env.NODE_ENV === "development" ? err : {}
-    });
+    console.error(
+      `[${new Date().toISOString()}] [UserController] Unexpected error during registration:`,
+      err.message
+    );
 
+    res.status(500).render('error', {
+      title: 'Something Went Wrong',
+      message:
+        'Unexpected error occurred during registration. Please try again later.',
+      error: process.env.NODE_ENV === 'development' ? err : {},
+    });
   }
 };
 
@@ -101,68 +118,84 @@ exports.postRegister = async (req, res, next) => {
  * Display login form
  */
 exports.getLogin = (req, res) => {
-  console.log(`[${new Date().toISOString()}] [UserController] Rendering login page`);
+  console.log(
+    `[${new Date().toISOString()}] [UserController] Rendering login page`
+  );
   try {
     res.render('users/login', {
       title: 'Login',
       csrfToken: req.csrfToken(),
-            error: null
+      error: null,
     });
   } catch (err) {
-    console.error(`[${new Date().toISOString()}] [UserController] Error rendering login page:`, err.message);
-    
-    res.status(500).render("error", {
-      title: "Something Went Wrong",
-      message: "Unable to load the login page. Please try again later.",
-      error: process.env.NODE_ENV === "development" ? err : {}
+    console.error(
+      `[${new Date().toISOString()}] [UserController] Error rendering login page:`,
+      err.message
+    );
+
+    res.status(500).render('error', {
+      title: 'Something Went Wrong',
+      message: 'Unable to load the login page. Please try again later.',
+      error: process.env.NODE_ENV === 'development' ? err : {},
     });
   }
-
 };
 
 /**
  * POST /users/login
  * Process login form
  */
-exports.postLogin = async (req, res, next) => {
+exports.postLogin = async (req, res) => {
   const { email } = req.body;
-  console.log(`[${new Date().toISOString()}] [UserController] Attempting login for ${email}`);
+  console.log(
+    `[${new Date().toISOString()}] [UserController] Attempting login for ${email}`
+  );
 
   try {
-    console.log(`[${new Date().toISOString()}] [UserController] Calling Supabase signInWithPassword for ${email}`);
+    console.log(
+      `[${new Date().toISOString()}] [UserController] Calling Supabase signInWithPassword for ${email}`
+    );
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
-      password: req.body.password
+      password: req.body.password,
     });
 
     if (error) {
-      console.warn(`[${new Date().toISOString()}] [UserController] Login failed for ${email}: Invalid credentials`);
-      return res.render("users/login", {
-        title: "Login",
-        error: "Invalid email or password",
-        csrfToken: req.csrfToken()
+      console.warn(
+        `[${new Date().toISOString()}] [UserController] Login failed for ${email}: Invalid credentials`
+      );
+      return res.render('users/login', {
+        title: 'Login',
+        error: 'Invalid email or password',
+        csrfToken: req.csrfToken(),
       });
     }
 
-    console.log(`[${new Date().toISOString()}] [UserController] Login successful for ${email}`);
+    console.log(
+      `[${new Date().toISOString()}] [UserController] Login successful for ${email}`
+    );
     req.session.user = data.user;
     req.session.access_token = data.session.access_token;
     req.session.refresh_token = data.session.refresh_token;
 
     req.session.save(() => {
-      console.log(`[${new Date().toISOString()}] [UserController] Session saved for ${email}`);
-      return res.redirect("/");
+      console.log(
+        `[${new Date().toISOString()}] [UserController] Session saved for ${email}`
+      );
+      return res.redirect('/');
     });
-
   } catch (err) {
-    console.error(`[${new Date().toISOString()}] [UserController] Unexpected error during login:`, err.message);
-    
-    res.status(500).render("error", {
-      title: "Something Went Wrong",
-      message: "Unexpected error occurred during login. Please try again later.",
-      error: process.env.NODE_ENV === "development" ? err : {}
-    });
+    console.error(
+      `[${new Date().toISOString()}] [UserController] Unexpected error during login:`,
+      err.message
+    );
 
+    res.status(500).render('error', {
+      title: 'Something Went Wrong',
+      message:
+        'Unexpected error occurred during login. Please try again later.',
+      error: process.env.NODE_ENV === 'development' ? err : {},
+    });
   }
 };
 
@@ -171,29 +204,39 @@ exports.postLogin = async (req, res, next) => {
  * Logout user
  */
 exports.postLogout = async (req, res) => {
-  console.log(`[${new Date().toISOString()}] [UserController] Logging out user`);
+  console.log(
+    `[${new Date().toISOString()}] [UserController] Logging out user`
+  );
 
   try {
     await supabase.auth.signOut();
-    console.log(`[${new Date().toISOString()}] [UserController] Supabase signOut successful`);
+    console.log(
+      `[${new Date().toISOString()}] [UserController] Supabase signOut successful`
+    );
 
     req.session.destroy((err) => {
       if (err) {
-        console.error(`[${new Date().toISOString()}] [UserController] Error destroying session:`, err.message);
+        console.error(
+          `[${new Date().toISOString()}] [UserController] Error destroying session:`,
+          err.message
+        );
       } else {
-        console.log(`[${new Date().toISOString()}] [UserController] Session destroyed successfully`);
+        console.log(
+          `[${new Date().toISOString()}] [UserController] Session destroyed successfully`
+        );
       }
       res.redirect('/');
     });
-
   } catch (err) {
-    console.error(`[${new Date().toISOString()}] [UserController] Unexpected error during logout:`, err.message);
-    res.status(500).render("error", {
-      title: "Something Went Wrong",
-      message: "Unexpected error occurred during logout. Please try again later.",
-      error: process.env.NODE_ENV === "development" ? err : {}
+    console.error(
+      `[${new Date().toISOString()}] [UserController] Unexpected error during logout:`,
+      err.message
+    );
+    res.status(500).render('error', {
+      title: 'Something Went Wrong',
+      message:
+        'Unexpected error occurred during logout. Please try again later.',
+      error: process.env.NODE_ENV === 'development' ? err : {},
     });
-
   }
 };
-

@@ -1,5 +1,5 @@
-const { fetchRandomBakingRecipe } = require("../services/recipeService");
-const csrf = require("csurf");
+const { fetchRandomBakingRecipe } = require('../services/recipeService');
+const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: false });
 
 /**
@@ -13,34 +13,44 @@ const csrfProtection = csrf({ cookie: false });
  * - Inject user session + CSRF token into the view
  */
 async function getRecipeOfTheDay(req, res) {
-  console.log(`[${new Date().toISOString()}] [RecipeController] Starting getRecipeOfTheDay`);
+  console.log(
+    `[${new Date().toISOString()}] [RecipeController] Starting getRecipeOfTheDay`
+  );
 
   try {
-    console.log(`[${new Date().toISOString()}] [RecipeController] Calling fetchRandomBakingRecipe service...`);
+    console.log(
+      `[${new Date().toISOString()}] [RecipeController] Calling fetchRandomBakingRecipe service...`
+    );
 
     // Fetch the recipe of the day from the recipe service
     const recipe = await fetchRandomBakingRecipe();
 
-    console.log(`[${new Date().toISOString()}] [RecipeController] Successfully fetched recipe: ${recipe.name || 'Unnamed recipe'}`);
+    console.log(
+      `[${new Date().toISOString()}] [RecipeController] Successfully fetched recipe: ${recipe.name || 'Unnamed recipe'}`
+    );
 
     // Render the recipe page with data and CSRF protection
-    res.render("recipeOfDay", { 
+    res.render('recipeOfDay', {
       recipe,
       user: req.session.user || null,
       csrfToken: req.csrfToken(),
-      title: "Recipe of the Day"
+      title: 'Recipe of the Day',
     });
 
-    console.log(`[${new Date().toISOString()}] [RecipeController] Rendered recipeOfTheDay page successfully`);
-
+    console.log(
+      `[${new Date().toISOString()}] [RecipeController] Rendered recipeOfTheDay page successfully`
+    );
   } catch (error) {
-    console.error(`[${new Date().toISOString()}] [RecipeController] Error fetching recipe:`, error.message);
-    res.status(500).render("error", {
-      title: "Something Went Wrong",
-      message: "Oops! We encountered an error while fetching the recipe. Please try again later.",
-      error: process.env.NODE_ENV === "development" ? error : {} // show stack only in dev
+    console.error(
+      `[${new Date().toISOString()}] [RecipeController] Error fetching recipe:`,
+      error.message
+    );
+    res.status(500).render('error', {
+      title: 'Something Went Wrong',
+      message:
+        'Oops! We encountered an error while fetching the recipe. Please try again later.',
+      error: process.env.NODE_ENV === 'development' ? error : {}, // show stack only in dev
     });
-
   }
 }
 
