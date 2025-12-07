@@ -83,6 +83,7 @@ exports.getLogin = (req, res) => {
     res.render('users/login', {
       title: 'Login',
       csrfToken: req.csrfToken(),
+            error: null
     });
   } catch (err) {
     console.error(`[${new Date().toISOString()}] [UserController] Error rendering login page:`, err.message);
