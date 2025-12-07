@@ -1,6 +1,17 @@
-# CS346 Semester Project Template
+# Bakery Website
 
-A teaching template for building secure web applications with Node.js, Express, EJS, and PostgreSQL.
+This website is an informational website for a bakery to be viewed by potential customers and updated by authorized persons. The website allows for bakery owners to easily update menu information including the uploading of images and other information.
+
+## Week 7
+
+- Created home page
+- Created menu page
+- Created 3 sub-menu pages
+- Created login page
+
+## Week 8
+
+- Added 
 
 ## Features
 
@@ -60,9 +71,11 @@ A teaching template for building secure web applications with Node.js, Express, 
 
 ```
 ├── src/
+│   ├── config/             # Supabase setup
 │   ├── server.js           # Server entry point
 │   ├── app.js              # Express app configuration
 │   ├── routes/             # Route definitions
+│   ├── services/           # API handling
 │   ├── controllers/        # Request handlers
 │   ├── models/             # Database models
 │   ├── views/              # EJS templates
