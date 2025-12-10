@@ -51,7 +51,7 @@ async function renderMenu(req, res, menuType, templateName) {
 
 // Drinks → drinks-menu.ejs
 router.get('/drinks-menu', csrfProtection, (req, res) =>
-  renderMenu(req, res, 'drinks', 'drinks-menu')
+  renderMenu(req, res, 'drink', 'drinks-menu')
 );
 
 // Bakery → bakery-menu.ejs
